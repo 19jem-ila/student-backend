@@ -3,15 +3,15 @@ import Student from "../models/studentModel.js";
 // ---------------- CREATE STUDENT ----------------
 export const createStudent = async (req, res) => {
   try {
-    const { name, rollNumber, dateOfBirth, address, parentName, parentContact, photo, class: classId } = req.body;
+    const { name, roll_number, dateOfBirth, address, parentName, parentContact, photo, class: classId } = req.body;
 
     // Check if student already exists
-    const existingStudent = await Student.findOne({ rollNumber });
+    const existingStudent = await Student.findOne({ roll_number });
     if (existingStudent) return res.status(400).json({ message: "Student with this roll number already exists" });
 
     const student = await Student.create({
       name,
-      rollNumber,
+      roll_number,
       dateOfBirth,
       address,
       parentName,
