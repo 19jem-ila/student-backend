@@ -51,13 +51,13 @@ export const getStudentById = async (req, res) => {
 // ---------------- UPDATE STUDENT ----------------
 export const updateStudent = async (req, res) => {
   try {
-    const { name, rollNumber, dateOfBirth, address, parentName, parentContact, photo, class: classId, isActive } = req.body;
+    const { name, roll_number, dateOfBirth, address, parentName, parentContact, photo, class: classId, isActive } = req.body;
 
     const student = await Student.findById(req.params.id);
     if (!student) return res.status(404).json({ message: "Student not found" });
 
     student.name = name || student.name;
-    student.rollNumber = rollNumber || student.rollNumber;
+    student.roll_number = roll_number || student.roll_number;
     student.dateOfBirth = dateOfBirth || student.dateOfBirth;
     student.address = address || student.address;
     student.parentName = parentName || student.parentName;
